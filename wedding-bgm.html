@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding BGM Selection | 想い出を彩る音楽</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .category-btn.active {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        .music-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .music-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        /* カスタムオーディオプレイヤーの簡易調整 */
+        audio {
+            height: 30px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-[#333]">
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <h1 class="serif text-2xl font-bold tracking-widest">MUSIC SELECT</h1>
+            <nav class="hidden md:flex space-x-8 text-sm uppercase tracking-widest">
+                <a href="#concept" class="hover:opacity-50">Concept</a>
+                <a href="#collection" class="hover:opacity-50">Collection</a>
+                <a href="#contact" class="hover:opacity-50">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=2000"
+                 alt="Wedding Background"
+                 class="w-full h-full object-cover opacity-80">
+            <div class="absolute inset-0 bg-black/20"></div>
+        </div>
+        <div class="relative z-10 text-center text-white px-4">
+            <p class="serif italic text-xl mb-4 animate-fade-in">Every memory has its melody.</p>
+            <h2 class="text-4xl md:text-6xl font-bold tracking-tighter leading-tight mb-8">
+                二人の物語を、<br>最高の音色で。
+            </h2>
+            <a href="#collection" class="inline-block border border-white px-10 py-4 hover:bg-white hover:text-black transition duration-300 tracking-widest text-sm">
+                VIEW COLLECTION
+            </a>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section id="collection" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h3 class="serif text-3xl mb-4">Song Collection</h3>
+            <p class="text-gray-500 text-sm">動画の雰囲気に合わせて最適な1曲を。</p>
+        </div>
+
+        <!-- Categories -->
+        <div class="flex flex-wrap justify-center gap-4 mb-16" id="filter-buttons">
+            <button class="category-btn active px-6 py-2 border border-black text-sm tracking-widest uppercase transition" data-filter="all">All</button>
+            <button class="category-btn px-6 py-2 border border-black text-sm tracking-widest uppercase transition" data-filter="chill">Chill</button>
+            <button class="category-btn px-6 py-2 border border-black text-sm tracking-widest uppercase transition" data-filter="dramatic">Dramatic</button>
+            <button class="category-btn px-6 py-2 border border-black text-sm tracking-widest uppercase transition" data-filter="peaceful">Peaceful</button>
+            <button class="category-btn px-6 py-2 border border-black text-sm tracking-widest uppercase transition" data-filter="stylish">Stylish</button>
+            <button class="category-btn px-6 py-2 border border-black text-sm tracking-widest uppercase transition" data-filter="happy">Happy</button>
+            <button class="category-btn px-6 py-2 border border-black text-sm tracking-widest uppercase transition" data-filter="instrumental">Instrumental</button>
+        </div>
+
+        <!-- Music Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="music-grid">
+            <!-- JavaScript will populate this -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-white py-20 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h4 class="serif text-2xl mb-8">Ready to create?</h4>
+            <p class="text-gray-500 mb-12 max-w-xl mx-auto text-sm leading-relaxed">
+                お気に入りの曲が見つかりましたら、制作担当までお知らせください。独自のライセンス管理により、著作権をクリアした状態で納品いたします。
+            </p>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="text-sm border-b border-black pb-1 hover:opacity-50">Instagram</a>
+                <a href="#" class="text-sm border-b border-black pb-1 hover:opacity-50">Email</a>
+            </div>
+            <p class="mt-20 text-[10px] tracking-[0.2em] text-gray-400 uppercase">© 2024 Wedding Music Selection. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 楽曲データ
+        const songs = [
+            // Chill
+            { id: 1, category: 'chill', title: 'Midnight Garden', artist: 'Lofi Weddings', img: 'https://images.unsplash.com/photo-1494774157365-9e04c6720e47?auto=format&fit=crop&q=80&w=800' },
+            { id: 2, category: 'chill', title: 'Sunset Glow', artist: 'Urban Relax', img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=800' },
+            { id: 3, category: 'chill', title: 'Blue Coffee', artist: 'Hazy Days', img: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=800' },
+            { id: 4, category: 'chill', title: 'Rainy Terrace', artist: 'Misty Soul', img: 'https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?auto=format&fit=crop&q=80&w=800' },
+            { id: 5, category: 'chill', title: 'Night Breeze', artist: 'Gentle Flow', img: 'https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?auto=format&fit=crop&q=80&w=800' },
+
+            // Dramatic
+            { id: 6, category: 'dramatic', title: 'Eternal Vow', artist: 'Epic Strings', img: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800' },
+            { id: 7, category: 'dramatic', title: 'Grand Entrance', artist: 'Orchestra One', img: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80&w=800' },
+            { id: 8, category: 'dramatic', title: 'Crescendo of Love', artist: 'The Cinematic', img: 'https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&q=80&w=800' },
+            { id: 9, category: 'dramatic', title: 'Fate Descending', artist: 'Pianist X', img: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&q=80&w=800' },
+            { id: 10, category: 'dramatic', title: 'The Last Scene', artist: 'Noble Sound', img: 'https://images.unsplash.com/photo-1465495910483-0d674b07c98f?auto=format&fit=crop&q=80&w=800' },
+
+            // Peaceful
+            { id: 11, category: 'peaceful', title: 'Forest Morning', artist: 'Nature Breath', img: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=800' },
+            { id: 12, category: 'peaceful', title: 'Pure White', artist: 'Clean Piano', img: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=800' },
+            { id: 13, category: 'peaceful', title: 'Sleeping Meadows', artist: 'Acoustic Soul', img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800' },
+            { id: 14, category: 'peaceful', title: 'Wind Harp', artist: 'Soft Waves', img: 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=800' },
+            { id: 15, category: 'peaceful', title: 'Calm River', artist: 'River Zen', img: 'https://images.unsplash.com/photo-1437482012496-103b140f6740?auto=format&fit=crop&q=80&w=800' },
+
+            // Stylish
+            { id: 16, category: 'stylish', title: 'City Lights', artist: 'Metro Funk', img: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=800' },
+            { id: 17, category: 'stylish', title: 'Gold Velvet', artist: 'Jazz Collective', img: 'https://images.unsplash.com/photo-1514525253361-b83f85dfd75c?auto=format&fit=crop&q=80&w=800' },
+            { id: 18, category: 'stylish', title: 'Electric Muse', artist: 'Neo Beats', img: 'https://images.unsplash.com/photo-1459749411177-042180ce673c?auto=format&fit=crop&q=80&w=800' },
+            { id: 19, category: 'stylish', title: 'High Fashion', artist: 'Minimalist', img: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=800' },
+            { id: 20, category: 'stylish', title: 'Mirror Ball', artist: 'Nu Disco', img: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=800' },
+
+            // Happy
+            { id: 21, category: 'happy', title: 'Sunday Picnic', artist: 'Ukulele Joy', img: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&q=80&w=800' },
+            { id: 22, category: 'happy', title: 'Wedding Bells', artist: 'Cheerful Pop', img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=800' },
+            { id: 23, category: 'happy', title: 'Bright Future', artist: 'Skyline', img: 'https://images.unsplash.com/photo-1473172738948-b5824888b2f2?auto=format&fit=crop&q=80&w=800' },
+            { id: 24, category: 'happy', title: 'Best Friends', artist: 'Handpan Duo', img: 'https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&q=80&w=800' },
+            { id: 25, category: 'happy', title: 'Summer Kiss', artist: 'Sun Side', img: 'https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&q=80&w=800' },
+
+            // Instrumental
+            { id: 26, category: 'instrumental', title: 'Solo Piano #1', artist: 'Aria', img: 'https://images.unsplash.com/photo-1520529688591-b213eb5ee91c?auto=format&fit=crop&q=80&w=800' },
+            { id: 27, category: 'instrumental', title: 'Classical Guitar', artist: 'Julian', img: 'https://images.unsplash.com/photo-1525201548111-32c283b4cf3c?auto=format&fit=crop&q=80&w=800' },
+            { id: 28, category: 'instrumental', title: 'Cello Moon', artist: 'Seraphina', img: 'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&q=80&w=800' },
+            { id: 29, category: 'instrumental', title: 'The Quartet', artist: 'String Kings', img: 'https://images.unsplash.com/photo-1528642463367-1fa8d33d9f36?auto=format&fit=crop&q=80&w=800' },
+            { id: 30, category: 'instrumental', title: 'Ambient Cloud', artist: 'Nebula', img: 'https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?auto=format&fit=crop&q=80&w=800' },
+        ];
+
+        const grid = document.getElementById('music-grid');
+        const buttons = document.querySelectorAll('.category-btn');
+
+        function renderSongs(filter = 'all') {
+            grid.innerHTML = '';
+            const filteredSongs = filter === 'all' ? songs : songs.filter(s => s.category === filter);
+
+            filteredSongs.forEach(song => {
+                const card = document.createElement('div');
+                card.className = 'music-card bg-white p-4 group';
+                card.innerHTML = `
+                    <div class="relative overflow-hidden aspect-[4/3] mb-4">
+                        <img src="${song.img}" alt="${song.title}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+                        <div class="absolute top-2 right-2 bg-white/90 px-2 py-1 text-[10px] uppercase tracking-tighter">
+                            ${song.category}
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="font-bold text-sm mb-1">${song.title}</h4>
+                        <p class="text-gray-400 text-xs">${song.artist}</p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-gray-50">
+                        <!-- 【音源貼り付け場所】 src="ここにURLを入れる" -->
+                        <audio controls class="opacity-60 hover:opacity-100 transition">
+                            <source src="" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Filter Logic
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                buttons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderSongs(btn.dataset.filter);
+            });
+        });
+
+        // Initial Render
+        renderSongs();
+    </script>
+</body>
+</html>
